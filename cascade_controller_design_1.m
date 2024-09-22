@@ -135,7 +135,7 @@ delta_y = 0;
 w_t = 0;
 
 out = sim('cascade_controller_design_1_sim');
-overshoot = round(max(out.y.Data) - out.y.Data(end), 2)*100;
+overshoot = stepinfo(out.y.Data, out.y.Time).Overshoot;
 rise_time = stepinfo(out.y.Data, out.y.Time).RiseTime;
 if overshoot <= 30
     disp("Overshoot is less than 30% and equal to:")
